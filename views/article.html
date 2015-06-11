@@ -35,7 +35,7 @@
         <hr>
 
         <!-- Div des articles précédents et suivants -->
-        <div>
+        <div ng-if="!config.loader">
             <!-- Article précédent -->
             <div ng-if="precSuiv().idPrec" class="text-center pull-left col-xs-6">
                 <a href="#/articles/{{precSuiv().idPrec}}">
