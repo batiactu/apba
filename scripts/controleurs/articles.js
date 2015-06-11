@@ -14,8 +14,8 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
     $scope.Math = window.Math;
 
     /* Routes accessibles pour les ng-if/ng-show*/
-    $scope.accesBarreBasse = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/groupes' || $location.path()=='/discussions' || $location.path()=='/gestion_realisations'";
-    $scope.accesBarreHaute = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/groupes' || $location.path()=='/filactu'";
+    $scope.accesBarreBasse = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/compte' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/gestionFilActu' || $location.path()=='/discussions' || $location.path()=='/gestion_realisations'";
+    $scope.accesBarreHaute = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/compte' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/gestionFilActu'";
     $scope.accesMenuToggle = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations'";
     $scope.accesFooter = "$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte'";
     
@@ -23,11 +23,55 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
     if($location.path()=='/') 
         delete($scope.filter.entity_type);
 
-    /* Si un mot-clé a été passé dans l'URL, alors on change l'entity_type */
-    if($location.path()=='/actualites') $scope.filter.entity_type='article_edito';
-    if($location.path()=='/produits') $scope.filter.entity_type='produitheque_produit';
-    if($location.path()=='/realisations') $scope.filter.entity_type='reseau_realisation';
-    if($location.path()=='/groupes') $scope.filter.entity_type='reseau_groupe';
+    // Si l'on se trouve dans les actualités alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
+    if($location.path()=='/actualites'){
+        angular.forEach($scope.filter, function(value, index){
+            delete ($scope.filter[index]);
+        });
+        $scope.filter.entity_type='article_edito';
+        $scope.filter.sort_order_date_or_relevance = false;
+        $scope.filter.switch_label = 'Date';
+    }
+
+    // Si l'on se trouve dans les produits alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
+    if($location.path()=='/produits'){
+        angular.forEach($scope.filter, function(value, index){
+            delete ($scope.filter[index]);
+        });
+        $scope.filter.entity_type='produitheque_produit';
+        $scope.filter.sort_order_date_or_relevance = false;
+        $scope.filter.switch_label = 'Date';
+    }
+
+    // Si l'on se trouve dans les realisations alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
+    if($location.path()=='/realisations'){
+        angular.forEach($scope.filter, function(value, index){
+            delete ($scope.filter[index]);
+        });
+        $scope.filter.entity_type='reseau_realisation';
+        $scope.filter.sort_order_date_or_relevance = false;
+        $scope.filter.switch_label = 'Date';
+    }
+
+    // Si l'on se trouve dans les groupes alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
+    if($location.path()=='/groupes'){
+        angular.forEach($scope.filter, function(value, index){
+            delete ($scope.filter[index]);
+        });
+        $scope.filter.entity_type='reseau_groupe';
+        $scope.filter.sort_order_date_or_relevance = false;
+        $scope.filter.switch_label = 'Date';
+    }
+
+    // Si l'on se trouve dans les fabricants alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
+    if($location.path()=='/fabricants'){
+        angular.forEach($scope.filter, function(value, index){
+            delete ($scope.filter[index]);
+        });
+        $scope.filter.entity_type='produitheque_produit';
+        $scope.filter.sort_order_date_or_relevance = false;
+        $scope.filter.switch_label = 'Date';
+    }
 
     /* Si un entity_type est passé en paramètre, alors on redirige vers la page concernée */
     if ($location.path=='/' || $location.path=='/actualites' || $location.path=='/produits' || $location.path=='/realisations' || $location.path=='/groupes'){
@@ -284,7 +328,6 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
      *  Traitement : - On supprime tous les filtres
      *               - On ajoute les filtres désirés : l'entity passé en paramètre, le tri par date, le label date pour le bouton toggle
      *  Résultat : Aucun
-    */
     $scope.changeEntity = function(unEntity){
         angular.forEach($scope.filter, function(value, index){
             delete ($scope.filter[index]);
@@ -293,6 +336,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
         $scope.filter.sort_order_date_or_relevance = false;
         $scope.filter.switch_label = 'Date';
     }
+    */
 
     /* Fonction permettant de renvoyer un tableau vide
      * Paramètre : n, un entier

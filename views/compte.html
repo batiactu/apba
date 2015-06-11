@@ -1,162 +1,54 @@
 <div class="container-fluid">
     <div class="middle-margin-top">
 
-        <!-- Div permettant d'afficher l'entity_type -->
+        <!-- Div de l'introduction de la page-->
         <div class="neg-margin-top tiny-margin-top">
-            <h1 class="text-center">Gestion du fil d'actualités</h1>
+            <h1 class="text-center">Gestion du compte</h1>
         </div>
 
-        <p class="lead text-justify">Sélectionner ici les éléments à ajouter à votre fil d'actualités. Une fois ceci fait, des articles relatifs à ces filtres seront ajoutés à votre fil d'actualité.</p>
-
-        <!-- Div de l'accordéon -->
-        <div class="panel-group" id="accordeonCompte">
-            <p class="lead">Actualités</p>
-            <!-- Div des thèmes -->
-            <div class="panel panel-actus panel-accordion">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed sans-style-a" data-toggle="collapse" data-parent="#accordeonCompte" href="#/compte#collapseThemeFav">
-                            <h4 class="text-white">
-                                Thèmes
-                                <span class="pull-right">
-                                    <i class="fa fa-caret-down fa-lg"></i>
-                                </span>
-                            </h4>
-                        </a>
-                    </h4>
-                </div>
-                <!-- Contenu des thèmes favoris -->
-                <div id="collapseThemeFav" class="panel-collapse collapse bg-white">
-                    <div class="panel-body">
-                        <div ng-repeat="theme in triFavoris(facets.theme)" ng-click="addThemeToFav(theme.name, $index)" class="well well-sm remove-margin-bot-pref">
-                            <span id="th_{{$index}}">
-                                {{theme.name}} <span id="spanth_{{$index}}" class="pull-right fa fa-lg"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Div des rubriques -->
-            <div class="panel panel-actus panel-accordion">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordeonCompte" href="#/compte#collapseRubriqueFav">
-                            <h4 class="text-white">Rubriques<span class="pull-right"><i class="fa fa-caret-down fa-lg"></i></span></h4>
-                        </a>
-                    </h4>
-                </div>
-                <!-- Contenu des rubriques favories -->
-                <div id="collapseRubriqueFav" class="panel-collapse collapse bg-white">
-                    <div class="panel-body">
-                        <p class="text-justify">
-                            <div ng-repeat="rubrique in triFavoris(facets.rubrique)" ng-click="addRubriqueToFav(rubrique.name, $index)" class="well well-sm remove-margin-bot-pref">
-                                <span id="rub_{{$index}}">
-                                    {{rubrique.name}} <span id="spanrub_{{$index}}" class="pull-right fa fa-lg"></span>
-                                </span>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-
-            <p class="lead">Réalisations</p>
-            <!-- Div des type_realisation -->
-            <div class="panel panel-real panel-accordion">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordeonCompte" href="#/compte#collapseTypeRealFav">
-                            <h4 class="text-white">Types de réalisation<span class="pull-right"><i class="fa fa-caret-down fa-lg"></i></span></h4>
-                        </a>
-                    </h4>
-                </div>
-                <!-- Contenu des type_realisation favoris -->
-                <div id="collapseTypeRealFav" class="panel-collapse collapse bg-white">
-                    <div class="panel-body">
-                        <p class="text-justify">
-                            <div ng-repeat="type_real in triFavoris(facets.type_realisation)" ng-click="addTypeRealToFav(type_real.name, $index)" class="well well-sm remove-margin-bot-pref">
-                                <span id="real_{{$index}}">
-                                    {{type_real.name | traduction}} <span id="spanreal_{{$index}}" class="pull-right fa fa-lg"></span>
-                                </span>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-
-            <p class="lead">Produits</p>
-            <!-- Div des fabricants -->
-            <div class="panel panel-produits panel-accordion">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordeonCompte" href="#/compte#collapseFabricantsFav">
-                            <h4 class="text-white">Fabricants<span class="pull-right"><i class="fa fa-caret-down fa-lg"></i></span></h4>
-                        </a>
-                    </h4>
-                </div>
-                <!-- Contenu des fabricants favoris -->
-                <div id="collapseFabricantsFav" class="panel-collapse collapse bg-white">
-                    <div class="panel-body">
-                        <p class="text-justify">
-                            <div ng-repeat="fabricant in triFavoris(facets.fabricant)" ng-click="addFabricantToFav(fabricant.name, $index)" class="well well-sm remove-margin-bot-pref">
-                                <span id="fab_{{$index}}">
-                                    {{fabricant.name}} <span id="spanfab_{{$index}}" class="pull-right fa fa-lg"></span>
-                                </span>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Div de l'alert ajoutant le favori -->
-        <div id="favoriInfoAdd" class="alert alert-success alert-dismissible fade in text-center" role="alert">
-            <h5><span></span> a bien été ajouté à vos favoris.</h4>
-        </div>
-
-        <!-- Div de l'alert supprimant le favori -->
-        <div id="favoriInfoDelete" class="alert alert-success alert-dismissible fade in text-center" role="alert">
-            <h5><span></span> a bien été supprimé de vos favoris.</h4>
-        </div>
-
-        <!-- Div de la suppression -->
+        <!-- Div du profil -->
         <div>
-            <!-- Div du bouton déclenchant le modal -->
-            <div class="text-center">
-                <button type="button" class="btn btn-danger btn" ng-click="deletePrefs()">
-                    Supprimer toutes mes préférences
-                </button>
-            </div>
-            <!-- Div du modal -->
-            <!--
-            <div class="modal fade" id="SuppressionActu" tabindex="-1" role="dialog" aria-labelledby="SuppressionFilActu" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="SuppressionFilActu">Suppression du fil d'actualités</h4>
-                        </div>
-                        <div class="modal-body">
-                            Souhaitez-vous vraiment supprimer vos préférences? <br>
-                            Cette action est irréversible. <br><br>
-                            Vous perdrez tous les éléments stockés pour votre fil d'actualités :
-                            <ul>
-                                <li>Thèmes</li>
-                                <li>Rubriques</li>
-                                <li>Types de réalisation</li>
-                                <li>Fabricants</li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-danger" ng-click="deletePrefs()">Supprimer mes préférences</button>
-                        </div>
-                    </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Gestion du profil</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="#/profil">
+                        <div class="well well-sm" style="margin-bottom:-1px;">Voir mon profil</div>
+                    </a>
+                    <a href="#/identite">
+                        <div class="well well-sm" style="margin-bottom:-1px;">Gérer mon identité</div>
+                    </a>
                 </div>
             </div>
-            -->
+        </div>
+
+        <!-- Div du fil d'actu -->
+        <div>
+            <a href="#/gestionFilActu" class="sans-style-a">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                       <h3 class="panel-title text-white">Gestion du fil d'actualités</h3>
+                    </div>
+                </div>
+            </a> 
+        </div>
+
+        <!-- Div du réseau (voir les contacts, en chercher un par barre de recherche, afficher des contacts potentiels)-->
+        <div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Gestion des contacts</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="">
+                        <div class="well well-sm" style="margin-bottom:-1px;">Voir mes contacts</div>
+                    </a>
+                    <a href="">
+                        <div class="well well-sm" style="margin-bottom:-1px;">Contacts potentiels</div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

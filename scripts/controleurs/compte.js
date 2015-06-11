@@ -39,7 +39,7 @@ console.log($location.path());
 
     // Affecte à $scope.facets.themes les data (les thèmes) obtenues par getThemes() et passe au vert les thèmes favoris
     setTimeout(function() {
-        if($location.path()=='/compte'){
+        if($location.path()=='/gestionFilActu'){
             angular.forEach($scope.pref_user.themes, function(value){
                 //angular.element(document.querySelector('#th_1')).addClass("text-success");
                 angular.element(document.querySelector('#'+value.id)).addClass("text-success");
@@ -51,7 +51,7 @@ console.log($location.path());
 
     // Affecte à $scope.facets.rubriques les data (les rubriques) obtenues par getRubriques() et passe au vert les rubriques favoris
     setTimeout(function() {
-        if($location.path()=='/compte'){
+        if($location.path()=='/gestionFilActu'){
             angular.forEach($scope.pref_user.rubriques, function(value){
                 angular.element(document.querySelector('#'+value.id)).addClass("text-success");
                 angular.element(document.querySelector('#span'+value.id)).addClass("fa fa-check");
@@ -62,7 +62,7 @@ console.log($location.path());
 
     // Affecte à $scope.facets.types_realisation les data (les types_realisation) obtenues par getTypesRealisation() et passe au vert les types_realisation favoris
     setTimeout(function() {
-        if($location.path()=='/compte'){
+        if($location.path()=='/gestionFilActu'){
             angular.forEach($scope.pref_user.types_realisation, function(value){
                 angular.element(document.querySelector('#'+value.id)).addClass("text-success");
                 angular.element(document.querySelector('#span'+value.id)).addClass("fa fa-check");
@@ -73,7 +73,7 @@ console.log($location.path());
 
     // Affecte à $scope.facets.fabricants les data (les fabricants) obtenues par getFabricants() et passe au vert les fabricants favoris
     setTimeout(function() {
-        if($location.path()=='/compte'){
+        if($location.path()=='/gestionFilActu'){
             angular.forEach($scope.pref_user.fabricants, function(value){
                 angular.element(document.querySelector('#'+value.id)).addClass("text-success");
                 angular.element(document.querySelector('#span'+value.id)).addClass("fa fa-check");
@@ -157,9 +157,10 @@ console.log($location.path());
             $scope.pref_user.rubriques[rubrique] = {'rubrique':rubrique, 'id':id};
             $('#favoriInfoAdd span').text('La rubrique ' + rubrique);
             $('#favoriInfoAdd').fadeIn();
+            /*
             setTimeout(function() {
                 $('#favoriInfoAdd').fadeOut();
-            }, 1000);
+            }, 1000);*/
         }
         else{
             delete($scope.pref_user.rubriques[rubrique]);

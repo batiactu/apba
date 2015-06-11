@@ -648,6 +648,12 @@ outline:none;
 /* Fin Bouton To top */
 /* Vrac */
 
+.info-fil-actu{
+    position: fixed;
+    bottom:30;
+    z-index: 9999;
+}
+
 .menu-bas{
     position: fixed;
     bottom:0;

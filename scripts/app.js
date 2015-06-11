@@ -12,6 +12,7 @@ app.config(function($routeProvider){
         .when('/inscription', {templateUrl : 'views/inscription.html'})
         .when('/filactu', {templateUrl : 'views/filactu.html', controller:'FilActuCtrl'})
         .when('/compte', {templateUrl : 'views/compte.html', controller:'CompteCtrl'})
+        .when('/gestionFilActu', {templateUrl : 'views/gestionFilActu.html', controller:'CompteCtrl'})
         .when('/photos', {templateUrl : 'views/photos.html', controller:'ArticlesCtrl'})
         .when('/discussions', {templateUrl : 'views/discussions.html', controller:'ArticlesCtrl'})
         .when('/gestion_realisations', {templateUrl : 'views/realisations.html', controller:'ArticlesCtrl'})
