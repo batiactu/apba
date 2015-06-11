@@ -1,1 +1,30 @@
-<div ng-controller="IdentificationCtrl" class="neg-navigation-margin-top"> <carousel> <slide ng-repeat="connect in connexion" active="connect.active"> <img class="brightness" style="width:100%;height:100%" ng-src="{{connect.image}}"> <div class="carousel-caption"> <form class="form-horizontal text-center brightness-inverse">  <div class="form-group little-neg-margin-top"> <div class="col-lg-10"> <input type="text" class="form-control" id="inputEmail" placeholder="Email"> </div> </div>  <div class="form-group little-neg-margin-top"> <div class="col-lg-10"> <input type="password" class="form-control" id="inputPassword" placeholder="Password"> </div> </div> <a href=""> <button class="btn btn-primary width-button-identification">S'identifier</button> </a> <div> <a href="http://reseau.batiactu.com/accueil?identification=1&returnTo=accueil#mdp"><p class="pull-left">Mot de passe oublié?</p></a> <a href="#/inscription"><p class="pull-right">S'inscrire</p></a> </div> </form> </div> </slide> </carousel> </div>
+<div ng-controller="IdentificationCtrl" class="neg-navigation-margin-top">
+	<carousel>
+	    <slide ng-repeat="connect in connexion" active="connect.active">
+	        <img class="brightness" style="width:100%;height:100%;" ng-src="{{connect.image}}">
+	        <div class="carousel-caption">
+	        	<form class="form-horizontal text-center brightness-inverse">
+	        		<!-- Adresse mail -->
+	        		<div class="form-group little-neg-margin-top">
+	        			<div class="col-lg-10">
+	        				<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+	        	  		</div>
+	        		</div>
+	        		<!-- Mot de passe -->
+	        		<div class="form-group little-neg-margin-top">
+	        	  		<div class="col-lg-10">
+	        	    		<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+	        	    	</div>
+	        	    </div>
+	        	    <a href="">
+	        	    	<button class="btn btn-primary width-button-identification">S'identifier</button>
+	        	    </a>
+	        	    <div>
+	        	    	<a href="http://reseau.batiactu.com/accueil?identification=1&returnTo=accueil#mdp"><p class="pull-left">Mot de passe oublié?</p></a>
+	        	    	<a href="#/inscription"><p class="pull-right">S'inscrire</p></a>
+	        	    </div>
+	        	</form>
+	    	</div>
+	  	</slide>
+	</carousel>
+</div>

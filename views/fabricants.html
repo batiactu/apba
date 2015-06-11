@@ -1,1 +1,32 @@
-<div class="container-fluid"> <div class="middle-margin-top">  <link type="text/css" rel="stylesheet" href="styles/bootstrapYeti_produitheque_produit.css"> <link type="text/css" rel="stylesheet" href="styles/main.aec8a659.css">  <div class="neg-margin-top text-center-media"> <a href="#"> <button class="btn btn-xs btn-primary"><i class="fa fa-arrow-circle-left fa-lg"></i> Retour à la recherche</button> </a> </div>  <div ng-if="filter.entity_type" class="neg-margin-top tiny-margin-top-media"> <h1 class="text-center">Liste des Fabricants</h1> </div>  <div ng-repeat="fabricant in newTab track by $index" ng-if="fabricant!=null"> <h2>{{fabricant[0].name.substr(0,1)}}</h2> <ul> <li ng-repeat="fab in fabricant"> <a href="#" ng-click="sortByFabricants(fab.name)"> {{fab.name}} ({{fab.value}}) </a> </li> </ul> </div> </div> </div>
+<div class="container-fluid">
+    <div class="middle-margin-top">
+
+        <!-- Fichiers CSS a utiliser selon l'entity_type est un article -->
+        <link type="text/css" rel="stylesheet" href="styles/bootstrapYeti_produitheque_produit.css">
+        <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+        <!-- Div du bouton de retour à la recherche -->
+        <div class="neg-margin-top text-center-media">
+            <a href="#">
+                <button class="btn btn-xs btn-primary"><i class="fa fa-arrow-circle-left fa-lg"></i> Retour à la recherche</button>
+            </a>
+        </div>
+
+        <!-- Div permettant d'afficher l'entity_type -->
+        <div ng-if="filter.entity_type" class="neg-margin-top tiny-margin-top-media">
+            <h1 class="text-center">Liste des Fabricants</h1>
+        </div>
+
+        <!-- Div des fabricants -->
+        <div ng-repeat="fabricant in newTab track by $index" ng-if="fabricant!=null">
+            <h2>{{fabricant[0].name.substr(0,1)}}</h2>
+            <ul>
+                <li ng-repeat="fab in fabricant">
+                    <a href="#" ng-click="sortByFabricants(fab.name)">
+                        {{fab.name}} ({{fab.value}})
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

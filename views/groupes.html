@@ -1,1 +1,51 @@
-<div id="top" style="margin-top:-60px"> <link rel="stylesheet" type="text/css" href="styles/bootstrapYeti_reseau_groupe.css"> <div>  <div> <h2>Catégories : </h2> <div ng-repeat="categorie in categories" class="text-center"> <div ng-click="sortByCategories(categorie.name)" class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> <div class="circle pastilleInitiales"> {{getInitials(categorie.name)}} </div> <button class="btn btn-primary" style="width:100%;margin-top:-20px"> {{categorie.name}} </button> </div> </div> </div>  <h2 style="margin-top:20px">Les derniers groupes : </h2> <div ng-repeat="groupe in groupes"> <a class="sans-style-a" href="#/articles/{{groupe.id}}"> <div class="well" style="width:100%; margin-bottom:-20px">   <div> <img ng-src="{{groupe.sm_image_url[0]}}" class="real-image-size"> </div>  <div> <p style="margin-top:-50px; margin-left:105px; font-size:1.1em"> <strong>{{groupe.label}}</strong> </p> <span class="pull-right"> ({{groupe.is_num_membres}} membre<span ng-if="groupe.is_num_membres!='1'">s</span>) </span>  <div style="margin-top:25px"> <strong>Catégorie</strong> : {{groupe.ss_categorie}}<br> <p>{{fixText(groupe.teaser, 100)}}</p> </div> </div> </div> </a> </div> </div> </div>
+<div id="top" style="margin-top:-60px;">
+
+
+    <link rel="stylesheet" type="text/css" href="styles/bootstrapYeti_reseau_groupe.css">
+
+    <div>
+        <!-- Div des catégories -->
+        <div>
+            <h2>Catégories : </h2>
+            <div ng-repeat="categorie in categories" class="text-center">
+                <div ng-click="sortByCategories(categorie.name)" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="circle pastilleInitiales">
+                        {{getInitials(categorie.name)}}
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;margin-top:-20px;">
+                        {{categorie.name}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Div contenant tous les groupes -->
+        <h2 style="margin-top:20px">Les derniers groupes : </h2>
+        <div ng-repeat="groupe in groupes">
+            <a class="sans-style-a" href="#/articles/{{groupe.id}}">
+                <div class="well" style="width:100%; margin-bottom:-20px"> <!-- Mettre un ng-repeat pour chaque groupe -->
+                    <!-- Div de l'image -->
+                    <div>
+                        <img ng-src="{{groupe.sm_image_url[0]}}" class="real-image-size">
+                    </div>
+                    <!-- Div des informations du groupe -->
+                    <div>
+                        <p style="margin-top:-50px; margin-left:105px; font-size:1.1em">
+                            <strong>{{groupe.label}}</strong>
+                        </p> 
+                        <span class="pull-right">
+                            ({{groupe.is_num_membres}} membre<span ng-if="groupe.is_num_membres!='1'">s</span>)
+                        </span>
+                        <!-- Div de la catégorie + texte -->
+                        <div style="margin-top:25px">
+                            <strong>Catégorie</strong> : {{groupe.ss_categorie}}<br>
+                            <p>{{fixText(groupe.teaser, 100)}}</p>  
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        
+     </div>
+</div>

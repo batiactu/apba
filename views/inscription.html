@@ -1,1 +1,40 @@
-<div ng-controller="IdentificationCtrl" class="neg-navigation-margin-top"> <carousel> <slide ng-repeat="connect in connexion" active="connect.active"> <img class="brightness" style="width:100%;height:100%" ng-src="{{connect.image}}"> <div class="carousel-caption"> <form class="form-horizontal text-center">  <div class="form-group"> <div class="col-lg-10"> <input type="text" class="form-control" id="inputEmail" placeholder="Prénom"> </div> </div>  <div class="form-group little-neg-margin-top"> <div class="col-lg-10"> <input type="text" class="form-control" id="inputEmail" placeholder="Nom"> </div> </div>  <div class="form-group little-neg-margin-top"> <div class="col-lg-10"> <input type="text" class="form-control" id="inputEmail" placeholder="Email"> </div> </div>  <div class="form-group little-neg-margin-top"> <div class="col-lg-10"> <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe"> </div> </div> <p>En vous inscrivant sur Batiactu, vous acceptez les <a href="">Conditions générales d'utilisation de Batiactu</a>, la <a href="">Politique de confidentialité</a> et la <a href="">politique relative aux cookies</a> de Batiactu</p> <a href=""> <button class="btn btn-primary width-button-identification">S'inscrire</button> </a> </form> <p>Vous avez déjà un compte? <a href="#/connexion">Identifiez-vous</a></p> </div> </slide> </carousel> </div>
+<div ng-controller="IdentificationCtrl" class="neg-navigation-margin-top">
+	<carousel>
+	    <slide ng-repeat="connect in connexion" active="connect.active">
+	        <img class="brightness" style="width:100%;height:100%;" ng-src="{{connect.image}}">
+	        <div class="carousel-caption">
+	        		<form class="form-horizontal text-center">
+	        			<!-- Prénom -->
+	        			<div class="form-group">
+	        				<div class="col-lg-10">
+	        					<input type="text" class="form-control" id="inputEmail" placeholder="Prénom">
+	        		  		</div>
+	        			</div>
+	        			<!-- Nom -->
+	        			<div class="form-group little-neg-margin-top">
+	        				<div class="col-lg-10">
+	        					<input type="text" class="form-control" id="inputEmail" placeholder="Nom">
+	        		  		</div>
+	        			</div>
+	        			<!-- Adresse mail -->
+	        			<div class="form-group little-neg-margin-top">
+	        				<div class="col-lg-10">
+	        					<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+	        		  		</div>
+	        			</div>
+	        			<!-- Mot de passe -->
+	        			<div class="form-group little-neg-margin-top">
+	        		  		<div class="col-lg-10">
+	        		    		<input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+	        		    	</div>
+	        		    </div>
+	        		    <p>En vous inscrivant sur Batiactu, vous acceptez les <a href="">Conditions générales d'utilisation de Batiactu</a>, la <a href="">Politique de confidentialité</a> et la <a href="">politique relative aux cookies</a> de Batiactu</p>
+	        		    <a href="">
+	        		    	<button class="btn btn-primary width-button-identification">S'inscrire</button>
+	        		    </a>
+	        		</form>
+	        	    <p>Vous avez déjà un compte? <a href="#/connexion">Identifiez-vous</a></p>
+	    	</div>
+	  	</slide>
+	</carousel>
+</div>
