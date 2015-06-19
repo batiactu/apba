@@ -83,3 +83,10 @@
     color: #fff;
     background: #c21322;
 }
+
+.text-primary {
+  color: #c21322;
+}
+a.text-primary:hover {
+  color: #e53f53;
+}

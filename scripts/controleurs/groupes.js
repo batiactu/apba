@@ -111,11 +111,15 @@ app.controller('GroupesCtrl', function ($scope, $log, $location, $route, GroupeF
         for (i=0; i<string.split(' ').length;i++){
             initials.push(string.split(' ')[i].substr(0,1).toUpperCase()+'.');
         }
-        if (initials[1]!==undefined)
+        // Si il y a 2 mots
+        if (initials[1]!==undefined && initials[2]==undefined){
             return initials[0] + initials[1];
-        else return initials[0];
+        }
+        // Si il y a 3 mots
+        else if (initials[1]!==undefined && initials[2]!==undefined){
+            return initials[0] + initials[1] + initials[2];
+        }
+        // Si il y a 1 mot
+        else return initials[0]; 
     }
-
-     
-
 })

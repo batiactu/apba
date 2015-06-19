@@ -1,54 +1,171 @@
-<div class="container-fluid">
-    <div class="middle-margin-top">
-
-        <!-- Div de l'introduction de la page-->
-        <div class="neg-margin-top tiny-margin-top">
-            <h1 class="text-center">Gestion du compte</h1>
-        </div>
-
-        <!-- Div du profil -->
-        <div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Gestion du profil</h3>
-                </div>
-                <div class="panel-body">
-                    <a href="#/profil">
-                        <div class="well well-sm" style="margin-bottom:-1px;">Voir mon profil</div>
-                    </a>
-                    <a href="#/identite">
-                        <div class="well well-sm" style="margin-bottom:-1px;">Gérer mon identité</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Div du fil d'actu -->
-        <div>
-            <a href="#/gestionFilActu" class="sans-style-a">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                       <h3 class="panel-title text-white">Gestion du fil d'actualités</h3>
-                    </div>
-                </div>
-            </a> 
-        </div>
-
-        <!-- Div du réseau (voir les contacts, en chercher un par barre de recherche, afficher des contacts potentiels)-->
-        <div>
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Gestion des contacts</h3>
-                </div>
-                <div class="panel-body">
-                    <a href="">
-                        <div class="well well-sm" style="margin-bottom:-1px;">Voir mes contacts</div>
-                    </a>
-                    <a href="">
-                        <div class="well well-sm" style="margin-bottom:-1px;">Contacts potentiels</div>
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid" ng-swipe-right="$location.path('/filactu')">
+    
+    <!-- Div de l'introduction de la page-->
+    <div class="margin-top-50-neg">
+        <h1 class="text-center">Gestion du compte</h1>
     </div>
+
+    <!-- Div du profil -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/profil" class="sans-style-a">
+            <div class="btn-primary">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Gestion du profil</strong></h4>
+                <div>
+                    <p>Gérez votre profil : ajoutez et modifiez vos informations personnelles et professionnelles.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Div du fil d'actus -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/gestionFilActu" class="sans-style-a">
+            <div class="btn-success">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-newspaper-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Gestion du fil d'actualités</strong></h4>
+                <div>
+                    <p>Gérez votre fil d'actualités : thèmes, rubriques, types de réalisation et travaux et fabricants.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Div des contacts -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/enCoursDeveloppement" class="sans-style-a">
+            <div class="btn-warning">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Gestion des contacts</strong></h4>
+                <div>
+                    <p>Gérez vos contacts : découvrez les contacts potentiels en lien avec vos formations ou expériences.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Div des groupes -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/enCoursDeveloppement" class="sans-style-a">
+            <div class="btn-danger">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Gestion des groupes</strong></h4>
+                <div>
+                    <p>Gérez les groupes auxquels vous appartenez : partagez vos idées avec les membres de Batiactu Réseau.<p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Div des paramètres -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/parametres_appli" class="sans-style-a">
+            <div class="btn-default">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Paramètres de l'application</strong></h4>
+                <div>
+                    <p>Gérez vos réglages utilisateurs : notifications, données personnelles, synchroniser les contacts.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Conditions et règlements -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/enCoursDeveloppement" class="sans-style-a">
+            <div class="btn-default">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Conditions et règlements</strong></h4>
+                <div>
+                    <p>Déclaration des droits et responsabilités, politique d'utilisation des données de l'application</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Contact -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/contact" class="sans-style-a">
+            <div class="btn-default">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-question fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Contact</strong></h4>
+                <div>
+                    <p>Un problème? Contactez un administrateur de l'application. Une réponse vous sera donnée rapidement</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- A Propos -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="#/propos" class="sans-style-a">
+            <div class="btn-default">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>A propos</strong></h4>
+                <div>
+                    <p>Version de l'application, copyright et autres informations relatives à l'application</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Déconnexion -->
+    <div class="text-center text-bootstrap col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="" class="sans-style-a" ng-controller="ArticlesCtrl" ng-click="deconnexion()">
+            <div class="btn-default">
+                <div class="font-size-1-4">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x opacity-3"></i>
+                        <i class="fa fa-power-off fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <h4><strong>Déconnexion</strong></h4>
+                <div>
+                    <p>Déconnectez vous de Batiactu. Au prochain démarrage de l'application, vos identifiants seront demandés</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
 </div>

@@ -1,12 +1,12 @@
-<div class="container-fluid" ng-swipe-right="$location.path('/')">
-    <div class="middle-margin-top">
+<div class="container-fluid" ng-swipe-right="$location.path('/')" ng-swipe-left="$location.path('/compte')">
+    <div class="margin-top-45-neg">
 
         <!-- Fichiers CSS a utiliser selon l'entity_type est un article -->
         <link type="text/css" rel="stylesheet" href="styles/bootstrapYeti_{{filter.entity_type | getCSS}}.css">
         <link type="text/css" rel="stylesheet" href="styles/main.css">
         <a name="top"></a>
 
-        <div class="home-neg-margin-top text-center">
+        <div class="text-center">
             <h1>Mon fil d'actualités <span ng-click="$location.path('/gestionFilActu')" class="fa fa-pencil"></span></h1>
         </div>
         <!-- Div de la barre de recherche -->
@@ -22,8 +22,8 @@
         </form>
 
         <!-- Div du toggle -->
-        <div ng-if="filter.keywords!=undefined && filter.keywords!=''" class="text-center tiny-margin-bottom">
-            <toggle-switch class="hauteurToggleButton"
+        <div ng-if="filter.keywords!=undefined && filter.keywords!=''" class="text-center margin-bot-10">
+            <toggle-switch class="hauteur-bouton-toggle"
                 ng-init="filter.sort_order_date_or_relevance=false"
                 ng-click="switchDateAndRelevance()"
                 ng-model="filter.sort_order_date_or_relevance"
@@ -32,7 +32,7 @@
         </div>
 
         <!-- Div du loader -->
-        <div ng-if="config.loader" class="loaderLocation">
+        <div ng-if="config.loader" class="position-loader">
             <div class="spinner">
                 <div class="spinner-container container1">
                     <div class="circle1"></div>
@@ -61,17 +61,17 @@
         </div>
 
         <!-- Div des 4 faux articles au chargement de la page -->
-        <div ng-if="config.loader" class="fakeArticle">
+        <div ng-if="config.loader" class="article-factice">
             <div class="row text-center">
                 <!-- Premier faux article -->
                 <div ng-repeat="t in repeteFakeArticles(4) track by $index" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="panel panel-default well hauteur-fixe">
                         <div class="hauteur-fixe-article">
-                            <img src="http://www.edisio.fr/flash/interrupteur/fond/gris.jpg" class="img-rounded img-responsive center-block hauteur-fixe-img toLeft opacity">
+                            <img src="images/gris.jpg" class="img-rounded img-responsive center-block hauteur-fixe-img toLeft opacity-3">
                         </div>
                         <div class="panel-body big-neg-margin-top">
                             <!-- Titre -->
-                            <div class="ellipsisTitre tiny-negative-margin-top-media">
+                            <div class="ellipsisTitre margin-top-15-neg-media">
                                 <h4>Lorem ipsum Dolor sit amet</h4>
                             </div>
                             <!-- Teaser -->
@@ -85,7 +85,7 @@
                             </div>
                         </div>             
                         <div>
-                            <button type="button" class="btn btn-sm btn-primary text-center opacity">En savoir plus</button>
+                            <button type="button" class="btn btn-sm btn-primary text-center opacity-3">En savoir plus</button>
                         </div> 
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="panel-body">
                                 <!-- Titre -->
-                                <div class="ellipsisTitre tiny-negative-margin-top-media">
+                                <div class="ellipsisTitre margin-top-15-neg-media">
                                     <a href="#/articles/{{article.id}}">
                                         <h4 ng-if="article.label">{{article.label}}</h4>
                                     </a>
@@ -133,11 +133,11 @@
                     </div>
                 </div>
                 <!-- PUBS -->
-                <div id="pubsHome">
-                    <div id="pubArticles" ng-if="factory.emplacementPub($index)" class=" col-lg-3 col-md-4 col-sm-6 col-xs-12 hauteur-fixe-pub">
-                        <div class="text-center withLessMargin-media" ng-controller="PubCtrl">
+                <div id="pubsFilActu">
+                    <div id="pubArticlesFilActu" ng-if="factory.emplacementPub($index)" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hauteur-fixe-pub">
+                        <div class="text-center margin-top-20" ng-controller="PubCtrl">
                             <a href="{{pub.clic}}" target="_blank">
-                                <img ng-src="{{pub.fichier}}" class="middle-margin-top largeur-pub-media little-margin-bottom">
+                                <img ng-src="{{pub.fichier}}" class="largeur-pub-media">
                             </a>
                         </div>
                     </div>
@@ -147,7 +147,6 @@
         </div>
 
         <!-- Div de la pagination -->
-
         <div class="hide">{{nb_page = (ws.nb / ws.nb_item)>10?10:(Math.ceil(ws.nb / ws.nb_item))}} {{pageCourante = ws.page_start}}</div>
         <div class="text-center" ng-if="nb_page>1"> 
             <ul class="pagination">

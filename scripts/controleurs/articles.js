@@ -13,16 +13,22 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
     $scope.$log = $log;                 // Pour le debug
     $scope.Math = window.Math;
 
+    var user = JSON.parse(localStorage.getItem("user"));
+    // Si on rentre dans cette condition on n'est pas connecté donc on force la redirection vers identification
+    if(user == null || user.isConnected == undefined || user.isConnected!=true){
+        $location.path('/identification');
+    }
+
     /* Routes accessibles pour les ng-if/ng-show*/
-    $scope.accesBarreBasse = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/compte' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/gestionFilActu' || $location.path()=='/discussions' || $location.path()=='/gestion_realisations'";
+    $scope.accesBarreBasse = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/compte' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/gestionFilActu' || $location.path()=='/discussions' || $location.path()=='/gestion_realisations' || location.path()=='/parametres_appli'";
     $scope.accesBarreHaute = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations' || $location.path()=='/compte' || $location.path()=='/groupes' || $location.path()=='/filactu' || $location.path()=='/gestionFilActu'";
     $scope.accesMenuToggle = "$location.path()=='/' || $location.path()=='/actualites' || $location.path()=='/produits' || $location.path()=='/realisations'";
     $scope.accesFooter = "$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte'";
     
     // Si l'on se trouve dans Home (/) sans mot après '/' alors on supprime l'entity_type
-    if($location.path()=='/') 
+    /*if($location.path()=='/') 
         delete($scope.filter.entity_type);
-
+*/
     // Si l'on se trouve dans les actualités alors on supprime tous les filtres et on remet l'entity_type et le filtre par date
     if($location.path()=='/actualites'){
         angular.forEach($scope.filter, function(value, index){
@@ -121,6 +127,20 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
         $anchorScroll();
     }
 
+    $scope.videEntity = function(){
+        delete($scope.filter.entity_type);
+        delete($scope.filter.rubrique);
+        delete($scope.filter.theme);
+        delete($scope.filter.fabricant);
+        delete($scope.filter.type_realisation);
+        if($location.path()=='/'){
+            $route.reload();
+        }
+        else{
+            $location.path('/');
+        }
+    }
+
     // Fonction qui retourne tous les articles par ordre de date de publication ou pertinence
     $scope.switchDateAndRelevance = function(){
         $scope.filter.switch_label = ($scope.filter.sort_order_date_or_relevance==true)?'Pertinence':'Date';
@@ -149,6 +169,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
             delete ($scope.filter[index]);
         });
         $scope.filter.theme=theme;
+        $scope.filter.entity_type='article_edito';
         $("#sidebar-wrapper").removeClass("active");
         ArticleFactory.getArticles($scope.filter).then(function(data){
             $scope.articles = data.items;
@@ -175,6 +196,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
         angular.forEach($scope.filter, function(value, index){
             delete ($scope.filter[index]);
         });
+        $scope.filter.entity_type='article_edito';
         $scope.filter.rubrique=rubrique;
         $("#sidebar-wrapper").removeClass("active");
         ArticleFactory.getArticles($scope.filter).then(function(data){
@@ -191,6 +213,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
             delete ($scope.filter[index]);
         });
         $scope.filter.type_realisation=type_realisation;
+        $scope.filter.entity_type='reseau_realisation';
         $("#sidebar-wrapper").removeClass("active");
         ArticleFactory.getArticles($scope.filter).then(function(data){
             $scope.articles = data.items;
@@ -206,6 +229,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
             delete ($scope.filter[index]);
         });
         $scope.filter.type_travaux=type_travaux;
+        $scope.filter.entity_type='reseau_realisation';
         $("#sidebar-wrapper").removeClass("active");
         ArticleFactory.getArticles($scope.filter).then(function(data){
             $scope.articles = data.items;
@@ -221,6 +245,7 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
             delete ($scope.filter[index]);
         });
         $scope.filter.fabricant=fabricant;
+        $scope.filter.entity_type='produitheque_produit';
         $("#sidebar-wrapper").removeClass("active");
         ArticleFactory.getArticles($scope.filter).then(function(data){
             $scope.articles = data.items;
@@ -354,5 +379,11 @@ app.controller('ArticlesCtrl', function ($scope, $log, $location, $route, Articl
         return text.substr(0,nbChar)+'...';
     }
 
+    $scope.deconnexion = function(){
+        localStorage.removeItem("user");
+        $location.path('/identification')
+    }
+
     $scope.URL = ArticleFactory.URL+'&DEBUG=1';             // Variable permettant de débugger
+
 })

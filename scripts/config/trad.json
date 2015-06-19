@@ -55,5 +55,21 @@
 	"internet-rt22":"Internet",
 	"communication-rt23":"Communication",
 	"conduite-de-projet-rt24":"Conduite de projet",
-	"mission-complete-rt25":"Mission complète"
+	"mission-complete-rt25":"Mission complète",
+
+	"actualites-t2":"Actualités",
+	"gros-oeuvre-t4":"Gros Oeuvre",
+	"second-oeuvre-t5":"Second Oeuvre",
+	"architecte-conception-t6":"Architecte Conception",
+	"immobilier-t7":"Immobilier",
+	"etat-collectivite-t8":"Etat Collectivité",
+	"negoce-industriels-t9":"Négoce Indusctriels",
+	"developpement-durable-t10":"Développement Durable",
+	"genie-climatique-electricite-t11":"Génie Climatique Electricité",
+	"securite-accessibilite-t12":"Sécurité Accessibilité",
+	"amenagements-exterieurs-t13":"Aménagements Extérieurs",
+	"materiel-equipement-t14":"Matériel Equipement",
+	"services-prestataires-t15":"Services Prestataires",
+	"zone-geographique-t16":"Zone Géographique",
+	"autres-t17":"Autres"
 }

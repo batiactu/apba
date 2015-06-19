@@ -1,9 +1,9 @@
-<div class="container-fluid little-margin-top">
+<div class="container-fluid margin-top-50">
 
     <link rel="stylesheet" type="text/css" href="styles/bootstrapYeti_reseau_realisation.css">
 
     <!-- Div du bouton de retour à la gestion des réalisations -->
-    <div class="middle-neg-margin-top text-center-media">
+    <div class="margin-top-20-neg text-center-media">
         <a href="#/gestion_realisations">
             <button class="btn btn-xs btn-primary"><i class="fa fa-arrow-circle-left fa-lg"></i> Retour à la gestion des réalisations</button>
         </a>
@@ -19,7 +19,7 @@
                 <!-- Titre -->
                 <div>
                     <h4><strong>Titre</strong></h4>
-                    <input type="text" placeholder="Titre" style="width:100%">
+                    <input type="text" placeholder="Titre" class="width-100">
                 </div>
                 <!-- Date -->
                 <div class="space-between-fields">
@@ -36,7 +36,7 @@
                 <!-- Type de travaux -->
                 <div class="space-between-fields">
                     <h4><strong>Type de travaux</strong></h4>
-                    <select  style="width:100%">
+                    <select  class="width-100">
                         <option value="0">Choisir</option>
                         <option ng-repeat="type_trav in facets.type_travaux" value="type_trav.name">{{type_trav.name | traduction}}</option>
                     </select>
@@ -44,7 +44,7 @@
                 <!-- Type de Réalisation -->
                 <div class="space-between-fields">
                     <h4><strong>Type de réalisation</strong></h4>
-                    <select style="width:100%">
+                    <select class="width-100">
                         <option value="0">Choisir</option>
                         <option ng-repeat="type_real in facets.type_realisation" value="type_real.name">{{type_real.name | traduction}}</option>
                     </select>
@@ -52,19 +52,21 @@
                 <!-- Description -->
                 <div class="space-between-fields">
                     <h4><strong>Description</strong></h4>
-                    <textarea placeholder="Description" style="width:100%"></textarea>
+                    <textarea placeholder="Description" class="width-100"></textarea>
                 </div>
                 <!-- Matériau, équipement, marque-->
                 <div>
                     <h4><strong>Matériau / Marque / Equipement</strong></h4>
-                    <textarea placeholder="Indiquez un matériau, un équipement, une marque..." style="width:100%"></textarea>
+                    <textarea placeholder="Indiquez un matériau, un équipement, une marque..." class="width-100"></textarea>
                 </div>
                 <!-- Bouton de validation du formulaire-->
                 <div  class="space-between-fields">
                     <input type="file" value="Ajouter une photo">
                 </div>
                 <div class="text-center space-between-fields">
-                    <button class="btn btn-primary" style="width:70%">Enregistrer ma réalisation</button>
+                    <a href="#/enCoursDeveloppement">
+                        <button class="btn btn-primary width-70">Enregistrer ma réalisation</button>
+                    </a>
                 </div>
             </form>
         </div>

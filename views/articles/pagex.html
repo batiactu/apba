@@ -22,7 +22,7 @@
                 </a>
                 <p ng-if="unArticle.TLienPhoto.length > 1"><b>Faites glisser votre doigt pour poursuivre le diaporama</b></p>
 
-                <p class="middle-opacity" ng-if="unArticle.signature">Source : {{unArticle.TLienPhoto[0].photo.source}} © </p>
+                <p class="opacity-5" ng-if="unArticle.signature">Source : {{unArticle.TLienPhoto[0].photo.source}} © </p>
             </div>
 
 
@@ -31,7 +31,7 @@
             <div>
                 <p ng-bind-html="TPage2.texte | replaceCharacter" class="text-justify"></p>
                 <!-- Div de la pagination -->
-                <div class="text-center middle-neg-margin-top"> 
+                <div class="text-center margin-top-20-neg"> 
                     <ul class="pagination">
                         <li ng-if="int_val(page) > 1">
                             <a href="#/articles/{{$routeParams.id}}/{{int_val(page)-1}}">&lt; Page précédente</a>

@@ -1,22 +1,22 @@
-<div class="container-fluid little-margin-top">
-    <div class="neg-margin-top">
+<div class="container-fluid">
+    <div class="margin-top-20">
 
         <!-- Fichiers CSS a utiliser selon l'entity_type -->
         <link type="text/css" rel="stylesheet" href="styles/bootstrapYeti_{{article.entity_type | getCSS}}.css">
         <link type="text/css" rel="stylesheet" href="styles/main.css">
         
         <!-- Div du bouton de retour à la recherche -->
-        <div class="tiny-margin-top text-center-media">
+        <div class="text-center-media">
             <a ng-click="retourRecherche(filter.entity_type)">
                 <button class="btn btn-xs btn-primary"><i class="fa fa-arrow-circle-left fa-lg"></i> Retour à la recherche</button>
             </a>
         </div>
 
         <!-- Div d'un faux article au chargement de la page -->
-        <div ng-if="config.loader" class="fakeArticle">
+        <div ng-if="config.loader" class="article-factice">
             <!-- Faux titre -->
             <h2 class="small-caps  text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
-            <img class="img-responsive center-block fake-img" src="http://www.edisio.fr/flash/interrupteur/fond/gris.jpg">
+            <img class="img-responsive center-block fake-img" src="images/gris.jpg">
             <div ng-repeat="fake in repeteFakeArticles(4) track by $index">
                 <p class="text-justify">
                     <h3>Coucou je suis un faux titre 1</h3>

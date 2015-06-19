@@ -24,7 +24,7 @@ app.factory('PubFactory', function ($http, $q) {
                 .success(function(data, status){
                     angular.forEach(data, function(value, key){
                         // On ne renvoie ques les gif (plus précisément on exclue les swf)
-                        if (value.fichier.indexOf("swf")==-1){
+                        if (value.fichier.indexOf("swf")==-1 && value.fichier !=''){
                             if (factoryPub.pubs == false){
                                 factoryPub.pubs = [];
                             }

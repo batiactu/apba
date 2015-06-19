@@ -11,9 +11,9 @@
         <!-- Div d'un article -->
         <div ng-repeat="article in articles | filter:query">
             <a href="#/articles/{{article.id}}">
-                <div class="hauteur-article-photo" style="background: #fff url({{article.sm_image_url[0]}}) no-repeat; background-size:100% 100%">
+                <div class="hauteur-article-photo" style="background: #fff url({{article.sm_image_url[0]}}) no-repeat; background-size:100%">
                     <!--Remettre si pb : style="background-image:url({{article.sm_image_url[0]}}); background-repeat:no-repeat; background-size:cover" -->
-                    <div class="height-photos height-photos">
+                    <div class="height-photos">
                         <br>
                         <span class="fa-stack fa-lg" style="margin-left:10px">
                             <i class="fa fa-circle fa-stack-2x" style="opacity:0.3;"></i>

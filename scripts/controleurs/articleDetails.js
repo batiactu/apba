@@ -9,6 +9,9 @@ app.controller('ArticleDetailsCtrl',  function ($scope, ArticleFactory, $log, $r
     $scope.$log = $log;                                                 // Pour le debug
     $scope.unArticle = {};                                              // On initialise unArticle à vide pour récupérer le contenu du zs_json
 
+    $scope.realisations_preferees = JSON.parse(localStorage.getItem("realisations_preferees"));
+    $('#favoriInfoAdd').hide();
+    $('#favoriInfoDelete').hide();
     /* Permet de récupérer l'article courant en fonction de son id */
     ArticleFactory.getArticle($routeParams.id).then(function(data){
         $scope.article = data[0];                                       // Variable contenant l'article en entier
@@ -222,6 +225,36 @@ app.controller('ArticleDetailsCtrl',  function ($scope, ArticleFactory, $log, $r
      */
     $scope.repeteFakeArticles = function(n){
         return new Array(n);
+    }
+
+    /* Fonction permettant d'ajouter un thème aux thèmes favoris et changeant la couleur de ce thème
+     *  Paramètres : theme, le thème à ajouter. index, la position de ce thème dans la liste des thèmes.
+     *  Traitement : - On change la couleur du thème (de noir à vert ou de vert à noir)
+     *               - On ajoute le thème à l'objet des préférences utilisateur s'il n'y est pas déjà. Sinon on le supprime
+     *  Résultat : Aucun
+     */
+    $scope.ajoutRealisationPreferee = function(article){
+        // On ajoute l'article à l'objet
+        if($scope.realisations_preferees == null){
+            $scope.realisations_preferees = {};
+        }
+        if (typeof $scope.realisations_preferees[article.entity_id] == 'undefined'){
+            $scope.realisations_preferees[article.entity_id] = article;
+            $('#ajout-real-favoris').text("Retirer cette réalisation des favoris");
+            $('#favoriInfoAdd').fadeIn();
+            setTimeout(function() {
+                $('#favoriInfoAdd').fadeOut();
+            }, 1500);
+        }
+        else{
+            delete($scope.realisations_preferees[article.entity_id]);
+            $('#ajout-real-favoris').text("Ajouter cette réalisation aux favoris");
+            $('#favoriInfoDelete').fadeIn();
+            setTimeout(function() {
+                $('#favoriInfoDelete').fadeOut();
+            }, 1500);
+        }
+        localStorage.setItem("realisations_preferees",JSON.stringify($scope.realisations_preferees));
     }
 
     /* Pour afficher l'image en grand (Réalisations) */

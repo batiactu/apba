@@ -1,7 +1,15 @@
-app.controller('IdentificationCtrl',  function ($scope){
+app.controller('IdentificationCtrl',  function ($scope, $location){
+    $scope.user={email:'', password:''}
 
-    /* Pour l'identification : slider */
-    var slides = $scope.slides = [];
+
+
+    /* Pour chaque slide, on insère dans un tableau toutes ses informations  :
+     *  icon : le font-awesome du slide
+     *  image : l'image de fond du slide
+     *  text : le texte secondaire du slide
+     *  title : le texte principal du slide
+    */
+    var slides = $scope.slides = [];            
         slides.push({
             icon:'fa-newspaper-o',
             image: 'images/image1.jpg',
@@ -33,10 +41,32 @@ app.controller('IdentificationCtrl',  function ($scope){
             title: 'Créez votre profil'
         });
 
-    /* Pour la connexion et l'inscription */
-    var connexion= $scope.connexion = [];
+    // Pour la connexion et l'inscription on procède de la même manière que pour l'identification, mais seulement avec l'image car il n'y a qu'un slide
+    var connexion = $scope.connexion = [];
     connexion.push({
             image: 'images/image6.jpg'
     });
+
+    $scope.image_connexion = 'images/image6.jpg';
+
+    $scope.identification = function(){
+        //Appeler le WS
+        var retourWS = {etat:'OK', info_user:{name:'Federer', firstname:'Roger'}};
+
+        // WS renvoie OK : on est connecté
+        if (retourWS.etat=='OK'){
+            $scope.user.nom = retourWS.info_user.name;
+            $scope.user.prenom = retourWS.info_user.firstname;
+            $scope.user.isConnected = true;
+            localStorage.setItem("user",JSON.stringify($scope.user));
+            $location.path('/')
+        }
+        // WS renvoie non : On reste sur la page et message erreur
+        else{
+            $("#erreur-connexion").removeClass("hide");
+        }
+        
+
+    }
 
 });

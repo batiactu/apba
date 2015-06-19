@@ -157,10 +157,9 @@ console.log($location.path());
             $scope.pref_user.rubriques[rubrique] = {'rubrique':rubrique, 'id':id};
             $('#favoriInfoAdd span').text('La rubrique ' + rubrique);
             $('#favoriInfoAdd').fadeIn();
-            /*
             setTimeout(function() {
                 $('#favoriInfoAdd').fadeOut();
-            }, 1000);*/
+            }, 1000);
         }
         else{
             delete($scope.pref_user.rubriques[rubrique]);
@@ -243,33 +242,4 @@ console.log($location.path());
         localStorage.removeItem("preferences_user_type_real");
         localStorage.removeItem("preferences_user_fabricant");
     }
-
-    /* Pour le modal
-    $scope.open = function (size) {
-
-        $modal.open({
-        animation: true,
-        templateUrl: 'views/contenuModal.html',
-        backdrop: true,
-        windowClass: 'modal',
-        controller: function ($scope, $modalInstance) {
-            $scope.cancel = function(){
-                console.log("cancelllll modal ");
-                $modalInstance.dismiss('cancel');
-            }
-        }
-    });
-
-        var modalInstance = $modal.open({
-          animation: true,
-          templateUrl: 'views/contenuModal.html',
-          controller: function ($scope, $modalInstance) {
-              $scope.cancel = function(){
-                  console.log("cancelllll modal ");
-                  $modalInstance.dismiss('cancel');
-              }
-          }
-        });
-
-    };*/
 })

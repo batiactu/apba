@@ -57,7 +57,7 @@ app.factory('ArticleFactory', function ($http, $rootScope, $q) {
             // Sinon on les récupère
             else{
                 // Variable à compléter afin d'y passer des paramètres (filtres)
-                var URL = 'http://demo.batiactu.info/webServiceSolarium/solarium3/scripts/ws.php?nb_item='+factory.nbArtMax+'&ENTITY='+factory.entity_default;
+                var URL = 'http://demo.batiactu.info/webServiceSolarium/solarium3/scripts/ws.php?nb_item='+factory.nbArtMax;
                 //var URL2 = 'http://demo.batiactu.info/webServiceSolarium/solarium3/scripts/ws.php?ENTITY=article_edito OR produitheque_produit&themeFILTER=(sm_theme:EDF OR sm_theme:Architecte) OR (sm_rubrique:Insolite OR sm_rubrique:Immobilier)';
 
                 /* On regarde si un paramètre est passé dans les filtres, si oui, on ajoute ce dernier à l'URL du WS
@@ -71,7 +71,8 @@ app.factory('ArticleFactory', function ($http, $rootScope, $q) {
                  *  fabricant : Fabricant, uniquement pour les produitheque_produit
                  *  page : Page de résultat des articles
                  */
-                if (typeof filter!== 'undefined'){                        
+                if (typeof filter!== 'undefined'){ 
+
                     var date_score = '';
                     if (filter.sort_order_date_or_relevance == true){
                         date_score = 'date';
@@ -90,6 +91,8 @@ app.factory('ArticleFactory', function ($http, $rootScope, $q) {
                         URL = URL +'&themeFILTER='+encodeURIComponent(filter.theme);
                     if (typeof filter.entity_type !== 'undefined')
                         URL = URL +'&ENTITY='+filter.entity_type;
+                    else
+                        URL = URL +'&ENTITY='+factory.entity_default;
                     if (typeof filter.rubrique !== 'undefined')
                         URL = URL +'&rubriqueFILTER='+filter.rubrique;
                     if (typeof filter.type_realisation !== 'undefined')
@@ -102,6 +105,9 @@ app.factory('ArticleFactory', function ($http, $rootScope, $q) {
                         URL = URL +'&N='+filter.page;
                     if (typeof filter.manual !== 'undefined')
                         URL = URL +'&manualFILTER='+filter.manual;
+                }
+                else{
+                    URL = URL +'&ENTITY='+factory.entity_default;
                 }
                 factory.URL = URL;
                 /* On récupère les articles */

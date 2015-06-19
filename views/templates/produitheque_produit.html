@@ -15,12 +15,12 @@
 <div>
 	<!-- Vidéo -->
 	<div ng-if="unArticle.zs_json.produit.video!='' && unArticle.zs_json.produit.video!='0'  && unArticle.zs_json.produit.url_video">
-		<a href="{{unArticle.zs_json.produit.url_video}}">Découvrir la vidéo de ce produit</a>
+		<a href="{{unArticle.zs_json.produit.url_video}}" target="_blank">Découvrir la vidéo de ce produit</a>
 	</div>
 
 	<!-- PDF -->
 	<div ng-if="unArticle.zs_json.produit.pdf!='' && unArticle.zs_json.produit.pdf!='0' && unArticle.zs_json.produit.url_video">
-		<a href="{{unArticle.zs_json.produit.url_pdf}}"> Ouvrir la fiche PDF de ce produit</a>
+		<a href="{{unArticle.zs_json.produit.url_pdf}}" target="_blank"> Ouvrir la fiche PDF de ce produit</a>
 	</div>
 
 	<!-- Date -->

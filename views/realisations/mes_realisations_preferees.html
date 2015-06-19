@@ -1,9 +1,9 @@
-<div class="container-fluid little-margin-top">
+<div class="container-fluid margin-top-50">
 
     <link rel="stylesheet" type="text/css" href="styles/bootstrapYeti_reseau_realisation.css">
 
     <!-- Div du bouton de retour à la gestion des réalisations -->
-    <div class="middle-neg-margin-top text-center-media">
+    <div class="margin-top-20-neg text-center-media">
         <a href="#/gestion_realisations">
             <button class="btn btn-xs btn-primary"><i class="fa fa-arrow-circle-left fa-lg"></i> Retour à la gestion des réalisations</button>
         </a>
@@ -13,21 +13,26 @@
 <div>
     <h2>Mes réalisations préférées</h2>
 
-    <!-- Div contenant toutes les réalisations -->
-    <div ng-repeat="article in articles">
+    <!-- Div redirigeant vers toutes les réalisations si il n'y a pas de préférées -->
+    <div ng-if="realisations_preferees">
+        <p class="lead">Vous n'avez pas encore de réalisations préférées, <a href="#/realisations">voir toutes les réalisations</a></p>
+    </div>
+
+    <!-- Div contenant toutes les réalisations préférées-->
+    <div ng-repeat="article in realisations_preferees">
         <a class="sans-style-a" href="#/articles/{{article.id}}">
-            <div class="well" style="width:100%; margin-bottom:-20px"> <!-- Mettre un ng-repeat pour chaque réalisations -->
+            <div class="well width-100 margin-bot-20-neg"> <!-- Mettre un ng-repeat pour chaque réalisations -->
                 <!-- Div de l'image -->
                 <div>
                     <img ng-src="{{article.sm_image_url[0]}}" class="real-image-size">
                 </div>
                 <!-- Div des informations de la réalisation -->
                 <div>
-                    <p style="margin-top:-50px; margin-left:105px; font-size:1.1em">
+                    <p class="margin-top-50-neg margin-left-105 font-size-1-1">
                         <strong>{{article.label}}</strong>
                     </p> 
                     <!-- Div de la catégorie + texte -->
-                    <div style="margin-top:25px">
+                    <div class="margin-top-25">
                         <strong>Créateur</strong> : {{article.sm_createurs[0]}}<br>
                         <span ng-if="article.ss_type_travaux!='undefined'">
                             <strong>Type de travaux</strong> : {{article.ss_type_travaux | traduction}}
