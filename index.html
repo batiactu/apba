@@ -1,267 +1,11 @@
-<html>
-    <head>
-        <meta author="Andréas" charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="styles/vendor/bootstrap/css/bootstrapYeti.min.css">
-        <link type="text/css" rel="stylesheet" href="styles/vendor/font-awesome/css/font-awesome.min.css">
-        <link type="text/css" rel="stylesheet" href="styles/vendor/angular-toggle-switch.css">
-        <link type="text/css" rel="stylesheet" href="styles/main.css">
-        <link type="image" rel="icon" href="styles/img/favicon_batiactu.ico">
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-sanitize.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-animate.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-touch.js"></script>
-        <script type="text/javascript" src="https://code.angularjs.org/1.2.14/angular-route.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="scripts/vendor/angular/angular-css-injector.js"></script>
-        <script type="text/javascript" src="scripts/vendor/angular/angular-toggle-switch.min.js"></script>
-        <script type="text/javascript" src="scripts/vendor/bootstrap/bootstrap.min.js"></script>
-        <script type="text/javascript" src="scripts/app.js"></script> 
-        <script type="text/javascript" src="scripts/services/article.js"></script>
-        <script type="text/javascript" src="scripts/services/fabricant.js"></script>
-        <script type="text/javascript" src="scripts/services/config.js"></script>
-        <script type="text/javascript" src="scripts/services/pub.js"></script>
-        <script type="text/javascript" src="scripts/services/compte.js"></script>
-        <script type="text/javascript" src="scripts/services/groupe.js"></script>
-        <script type="text/javascript" src="scripts/services/realisation.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/articleDetails.js"></script> 
-        <script type="text/javascript" src="scripts/controleurs/articles.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/fabricants.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/pubs.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/identification.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/compte.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/filactu.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/groupes.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/realisations.js"></script>
-        <script type="text/javascript" src="scripts/controleurs/realpref.js"></script>
-        <script type="text/javascript" src="scripts/vendor/ui-bootstrap-tpls-0.13.0.min.js"></script>
-
-        <!-- FANCYBOX -->
-        <link type="text/css" rel="stylesheet" href="styles/vendor/jquery/fancybox.css">
-        <link type="text/css" rel="stylesheet" href="styles/vendor/jquery/jquery.fancybox-buttons.css">
-        <link type="text/css" rel="stylesheet" href="styles/vendor/jquery/jquery.fancybox-thumbs.css">
-        <script type="text/javascript" src="scripts/vendor/jquery/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="scripts/vendor/jquery/jquery.mousewheel-3.0.6.pack.js"></script>
-        <script type="text/javascript" src="scripts/vendor/jquery/fancybox/helpers/jquery.fancybox-buttons.js"></script>
-        <script type="text/javascript" src="scripts/vendor/jquery/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-        <script type="text/javascript" src="scripts/vendor/jquery/fancybox/helpers/jquery.fancybox-media.js"></script>
-
-        <!-- POUR FLECHE VERS LE HAUT -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-        <script src="http://sd-1.archive-host.com/membres/up/3347790973941088/easing.js" type="text/javascript"></script>
-        <script src="http://sd-1.archive-host.com/membres/up/3347790973941088/jqueryuitotop.js" type="text/javascript"></script>
-
-        <!-- Pour les partages
-        <script language="javascript" src="http://reseau.batiactu.com/plugin/like-share-comment.js"></script>
-        <script language="javascript">
-            var cip_BReseauLike = new BReseauLike();
-            cip_BReseauLike.set(document.location.href, 'type_like');
-
-            var cip_BReseaushare = new BReseauShare();
-            cip_BReseaushare.set(document.location.href, 'type_share');
-
-            var cip_BReseauComment = new BReseauComment();
-            cip_BReseauComment.set(document.location.href);
-        </script>
-        -->
-
-        <title>Batiactu</title>
-    </head>
-
-    <body ng-app="myapp" id="monBody">
-        <div id="top"></div>
-  
-        <!-- Navbar -->
-        <div ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion'" class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-                <a href="#/filactu" class="navbar-brand"><i class="fa fa-home fa-lg"></i></a>
-                <button id="menu-hamburger" class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav" ng-controller="ArticlesCtrl">
-                    <li class="color-actu"><a href="#/actualites">Actualités</a></li>
-                    <li class="color-prod"><a href="#/produits">Produits</a></li>
-                    <li class="color-rese"><a href="#/realisations">Réalisations</a></li>
-                    <li class="color-prod"><a href="#/fabricants">Fabricants</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/compte">Mon compte</a></li>
-                    <li ng-click="deconnexion()"><a href="">Déconnexion</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- FIN Navbar-->
-
-        <!-- Menu haut -->
-        <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreHaute}}" class="btn-group btn-group-justified margin-top-45">
-            <a ng-click="videEntity()" class="btn btn-default"><i class="fa fa-fire fa-lg"></i></a>
-            <a href="#/filactu" ng-click="changeEntity('')" class="btn btn-default"><i class="fa fa-newspaper-o fa-lg"></i></a>
-            <a href="#/compte" class="btn btn-default"><i class="fa fa-user fa-lg"></i></a>
-        </div>
-        <!-- Fin Menu haut -->
-
-        <!-- Menu bas-->
-        <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreBasse}}" class="menu-bas">
-            <div class="btn-group btn-group-justified">
-                <a href="#/gestion_realisations" class="btn btn-default"><i class="fa fa-briefcase fa-lg"></i></a>
-                <a href="#/discussions" class="btn btn-default"><i class="fa fa-comments fa-lg"></i></a>
-                <a href="#/groupes" ng-click="changeEntity('reseau_groupe')" class="btn btn-default"><i class="fa fa-users fa-lg"></i></a>
-            </div>
-        </div>
-        <!-- Fin Menu bas-->
-
-        <!-- Contenu de la page -->
-        <div class="container-fluid">
-            <div class="row-fluid">
-
-                <!-- Menu Toggle -->
-                <div ng-controller="ArticlesCtrl" class="navigation-margin-top">
-                    <div ng-show="{{accesMenuToggle}}">
-                        <span id="menu-toggle" class="btn btn-dark toggle toggle-margin-top z-index-9999"><i class="fa fa-filter"></i></span>
-                        <nav id="sidebar-wrapper" class="margin-top-45-neg">
-                            <ul class="sidebar-nav">
-                                <a id="menu-close" href="#" class="btn btn-light pull-right toggle"><i class="fa fa-times"></i></a>
-                                <!-- ACCORDEON -->
-                                <div class="panel-group" id="accordion">
-                                    <!-- Menu N°1 à afficher uniquement s'il y a des thèmes : GENERAL-->
-                                    <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Gen">
-                                                    <h4 class="text-white neg-margin-left">Thèmes <i class="fa fa-caret-down fa-lg"></i></h4>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <!-- Contenu du menu n°1 -->
-                                        <div id="collapse1Gen" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <p class="text-justify">
-                                                    <li class="neg-margin-left" ng-repeat="theme in menuToggle.themes">
-                                                        <a href="#" ng-click="sortByTheme(theme.name)">
-                                                            <span>{{theme.name}} ({{theme.value}})</span>
-                                                        </a>
-                                                    </li>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div> 
-
-                                    <!-- Menu N°2 à afficher uniquement s'il y a des rubriques :GENERAL -->
-                                    <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2Gen">
-                                                    <h4 class="text-white neg-margin-left">Rubriques <i class="fa fa-caret-down fa-lg"></i></h4>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <!-- Contenu du menu n°2 -->
-                                        <div id="collapse2Gen" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <p class="text-justify">
-                                                    <li class="neg-margin-left" ng-repeat="rubrique in menuToggle.rubriques">
-                                                        <a href="#" ng-click="sortByRubrique(rubrique.name)">
-                                                            <span>{{rubrique.name}} ({{rubrique.value}})</span>
-                                                        </a>
-                                                    </li>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Menu N°3 à afficher uniquement s'il y a des Types de réalisation : GENERAL-->
-                                    <div class="panel panel-accordion" ng-show="($location.path()=='/realisations') || ($location.path()=='/' && filter.fabricant==undefined && filter.theme==undefined) && filter.rubrique==undefined">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3Gen">
-                                                    <h4 class="text-white neg-margin-left">Type de réalisation <i class="fa fa-caret-down fa-lg"></i></h4>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <!-- Contenu du menu n°3 -->
-                                        <div id="collapse3Gen" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <p class="text-justify">
-                                                    <li class="neg-margin-left"ng-repeat="type_real in menuToggle.types_realisation">
-                                                        <a href="#" ng-click="sortByTypeRealisation(type_real.name)">
-                                                            <span>{{type_real.name | traduction}} ({{type_real.value}})</span>
-                                                        </a>
-                                                    </li>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Menu N°4 à afficher uniquement s'il y a des fabricants : GENERAL-->
-                                    <div class="panel panel-accordion" ng-show="($location.path()=='/produits') || ($location.path()=='/' && filter.theme==undefined && filter.type_realisation==undefined && filter.rubrique==undefined)">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4Gen">
-                                                    <h4 class="text-white neg-margin-left">Fabricants <i class="fa fa-caret-down fa-lg"></i></h4>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <!-- Contenu du menu n°3 -->
-                                        <div id="collapse4Gen" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <p class="text-justify">
-                                                    <li class="neg-margin-left"ng-repeat="fabricant in menuToggle.fabricants">
-                                                        <a href="#" ng-click="sortByFabricants(fabricant.name)">
-                                                            <span>{{fabricant.name}} ({{fabricant.value}})</span>
-                                                        </a>
-                                                    </li>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--URL du WS pour le debug -->
-                                    <ul class="margin-top-250 opacity-1">
-                                        <a href="{{URL}}">URL du WS</a>
-                                    </ul>
-                                </div>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <!-- FIN Menu Toggle -->
-            </div>
-        </div>
-
-        <!-- Affiche le contenu de la page -->
-        <div ng-view></div> 
- 
-        <hr ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte'">
-
-        <footer ng-controller="ArticlesCtrl" ng-show="{{accesFooter}}" class="neg-margin-top hide-footer">
-            <div class="container-fluid follow-us-container">
-                <div class="text-center follow-us">
-                    Nous suivre
-                </div>
-                <br />
-                <div class="text-center">
-                    <a class="fa fa-facebook social-icon" href="https://www.facebook.com/Batiactu?fref=ts" target="_blank"></a>
-                    <a class="fa fa-twitter social-icon" href="https://twitter.com/actualite_BTP" target="_blank"></a>
-                    <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/cap-information-professionnelle" target="_blank"></a>
-                    <a class="fa fa-google-plus social-icon" href="https://plus.google.com/+batiactu/about?hl=fr" target="_blank"></a>
-                </div>
-            </div>
-        </footer>
-
-        <script>
-
-            // Ouvrir  le menu toggle
-            $("#menu-toggle").click(function(e) {
+<html> <head> <meta author="Andréas" charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1">  <link rel="stylesheet" href="styles/vendor.59789171.css"> <link rel="stylesheet" href="styles/style_vendor.d41d8cd9.css"> <link rel="stylesheet" href="styles/main.c55441a2.css"> <script src="scripts/vendor.85ba7d8a.js"></script> <script src="scripts/script_vendor.62f1a0fb.js"></script> <script src="scripts/script.db4787ed.js"></script> <title>Batiactu</title>  <body ng-app="myapp" id="monBody"> <div id="top"></div>  <div ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion'" class="navbar navbar-default navbar-fixed-top"> <div class="navbar-header"> <a href="#/filactu" class="navbar-brand"><i class="fa fa-home fa-lg"></i></a> <button class="navbar-toggle" type="button"> <a href="#/compte"><span class="fa fa-user fa-lg text-white"></span></a> </button> </div> <div class="collapse navbar-collapse"> <ul class="nav navbar-nav navbar-right margin-right-20"> <li><a href="#/compte"><strong>Mon compte</strong></a></li> </ul> </div> </div>   <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreHaute}}" class="btn-group btn-group-justified margin-top-45"> <a ng-click="videEntity()" class="btn btn-default"><i class="fa fa-fire"></i> Batiactu</a> <a href="#/filactu" ng-click="changeEntity('')" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Mon Batiactu</a> </div>   <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreBasse}}" class="menu-bas"> <div class="btn-group btn-group-justified"> <a href="#/gestion_realisations" class="btn btn-default"><i class="fa fa-briefcase"></i> Réalisations</a> <a href="#/discussions" class="btn btn-default"><i class="fa fa-comments"></i> Discussions</a> <a href="#/groupes" ng-click="changeEntity('reseau_groupe')" class="btn btn-default"><i class="fa fa-users"></i> Groupes</a> </div> </div>   <div class="container-fluid"> <div class="row-fluid">  <div ng-controller="ArticlesCtrl" class="navigation-margin-top"> <div ng-show="{{accesMenuToggle}}"> <span id="menu-toggle" class="btn btn-dark toggle toggle-margin-top z-index-9999"><i class="fa fa-filter"></i></span> <nav id="sidebar-wrapper" class="margin-top-45-neg"> <ul class="sidebar-nav"> <a id="menu-close" href="#" class="btn btn-light pull-right toggle"><i class="fa fa-times"></i></a>  <div class="panel-group" id="accordion"> <div class="panel panel-accordion"> <div class="panel-heading" ng-click="closeMenuFiltres()"> <h4 class="panel-title text-white font-size-1-3"><a href="#/actualites">Actualités</a></h4> </div> <div class="panel-heading" ng-click="closeMenuFiltres()"> <h4 class="panel-title text-white font-size-1-3"><a href="#/produits">Publications</a></h4> </div> <div class="panel-heading" ng-click="closeMenuFiltres()"> <h4 class="panel-title text-white font-size-1-3"><a href="#/realisations">Réalisations</a></h4> </div> <hr style="color:#fff"> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Gen"> <h4 class="text-white neg-margin-left">Thèmes <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse1Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="theme in menuToggle.themes"> <a href="#" ng-click="sortByTheme(theme.name)"> <span>{{theme.name}} ({{theme.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2Gen"> <h4 class="text-white neg-margin-left">Rubriques <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse2Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="rubrique in menuToggle.rubriques"> <a href="#" ng-click="sortByRubrique(rubrique.name)"> <span>{{rubrique.name}} ({{rubrique.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/realisations') || ($location.path()=='/' && filter.fabricant==undefined && filter.theme==undefined) && filter.rubrique==undefined"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3Gen"> <h4 class="text-white neg-margin-left">Type de réalisation <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse3Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="type_real in menuToggle.types_realisation"> <a href="#" ng-click="sortByTypeRealisation(type_real.name)"> <span>{{type_real.name | traduction}} ({{type_real.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/produits') || ($location.path()=='/' && filter.theme==undefined && filter.type_realisation==undefined && filter.rubrique==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4Gen"> <h4 class="text-white neg-margin-left">Fabricants <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse4Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="fabricant in menuToggle.fabricants"> <a href="#" ng-click="sortByFabricants(fabricant.name)"> <span>{{fabricant.name}} ({{fabricant.value}})</span> </a> </li> </p> </div> </div> </div>  <ul class="margin-top-250 opacity-1"> <a href="{{URL}}">URL du WS</a> </ul> </div> </ul> </nav> </div> </div>  </div> </div>  <div ng-view></div> <hr ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte'"> <footer ng-controller="ArticlesCtrl" ng-show="{{accesFooter}}" class="neg-margin-top hide-footer"> <div class="container-fluid follow-us-container"> <div class="text-center follow-us"> Nous suivre </div> <br> <div class="text-center"> <a class="fa fa-facebook social-icon" href="https://www.facebook.com/Batiactu?fref=ts" target="_blank"></a> <a class="fa fa-twitter social-icon" href="https://twitter.com/actualite_BTP" target="_blank"></a> <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/cap-information-professionnelle" target="_blank"></a> <a class="fa fa-google-plus social-icon" href="https://plus.google.com/+batiactu/about?hl=fr" target="_blank"></a> </div> </div> </footer> <script>// Ouvrir  le menu toggle
+            jQuery("#menu-toggle").click(function(e) {
                 e.preventDefault();
-                $("#sidebar-wrapper").toggleClass("active");
+                jQuery("#sidebar-wrapper").toggleClass("active");
             });
             // Fermer le menu toggle au clic ailleurs
-            $(document).mouseup(function (e){
-                var container = $("#sidebar-wrapper");
+            jQuery(document).mouseup(function (e){
+                var container = jQuery("#sidebar-wrapper");
                 if (container.hasClass("active")){
                     if (!container.is(e.target) && container.has(e.target).length === 0){
                         container.toggleClass("active");
@@ -270,26 +14,22 @@
             });
 
             // Avec le bouton 
-            $("#menu-close").click(function(e) {
+            jQuery("#menu-close").click(function(e) {
                 e.preventDefault();
-                $("#sidebar-wrapper").toggleClass("active");
+                jQuery("#sidebar-wrapper").toggleClass("active");
             });
 
             // Flèche vers le haut
-            $.noConflict();
+            jQuery.noConflict();
             jQuery(document).ready(function() {
                 jQuery().UItoTop({ easingType: 'easeOutQuart' });
             });
 
             // Fermer menu hamburger au click ailleurs
-            $(document).click(function(event) { 
-                if(!$(event.target).closest('#menu-hamburger').length) {
-                    if($('#navbar-main').is(":visible")) {
-                        $('#navbar-main').toggleClass("in");
+            jQuery(document).click(function(event) { 
+                if(!jQuery(event.target).closest('#menu-hamburger').length) {
+                    if(jQuery('#navbar-main').is(":visible")) {
+                        jQuery('#navbar-main').toggleClass("in");
                     }
                 }        
-            });
-
-        </script>
-    </body>
-</html>
+            });</script>  
