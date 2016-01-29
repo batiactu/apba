@@ -94,6 +94,11 @@
     <!-- plugin phonegap device -->
     <gap:plugin name="org.apache.cordova.device" version="0.3.0" />
 
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
+
+
+
+
     <!-- plugin Navigation liste blanche -->
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 
