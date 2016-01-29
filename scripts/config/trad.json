@@ -1,10 +1,11 @@
 {
   "title":"Fichier traduction en Français",
   "desc":"# version française",
-  "version":"1444891456",
+  "version":"1444891457",
   "trad": {
     "PAGE____DEV": "",
     "message sur site": "Traduction associée",
+    "entity_type": "Recherche dans",
     "article_edito": "Actualités",
     "produitheque_produit": "Produits",
     "reseau_realisation": "Réalisations",

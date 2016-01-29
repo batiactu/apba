@@ -1,0 +1,78 @@
+{
+  "configGen": {
+    "entity_type" : [
+      "article_edito", "produitheque_produit", "reseau_realisation", "formation_annonce", "materiel_annonce"
+    ],
+    "filterNotVisible" : ["sort", "sort_order", "switch_label", "keywords", "entity_type", "manual"],
+    "facet": [],
+    "sort": {
+      "date": "Date",
+      "score": "Pertinence",
+      "prix": "Prix"
+    }
+  },
+  "configEntityType": {
+    "article_edito": {
+      "path": "/actualites",
+      "sort_order": "DESC",
+      "sort": "date",
+      "manualFilter": "",
+      "switch_label": "Date",
+      "titreHome": "Actualités",
+      "sousTitreHome": "Découvrez ici toutes les actualités de Batiactu.",
+      "sortList": ["date", "score"],
+      "facetList": []
+    },
+    "produitheque_produit": {
+      "path": "/produits",
+      "sort_order": "DESC",
+      "sort": "date",
+      "manualFilter": "",
+      "switch_label": "Date",
+      "titreHome": "Publications",
+      "sousTitreHome": "Découvrez ici tous les publications de Batiactu.",
+      "sortList": ["date", "score"],
+      "facetList": []
+    },
+    "reseau_realisation": {
+      "path": "/realisations",
+      "sort_order": "DESC",
+      "sort": "date",
+      "manualFilter": "",
+      "switch_label": "Date",
+      "titreHome": "Réalisations sur Batiactu Réseau",
+      "sousTitreHome": "Découvrez ici les réalisations des membres de Batiactu.",
+      "sortList": ["date", "score"],
+      "facetList": []
+    },
+    "reseau_groupe": {
+      "path": "/groupes",
+      "sort_order": "DESC",
+      "sort": "date",
+      "manualFilter": "",
+      "switch_label": "Date"
+    },
+    "formation_annonce": {
+      "path": "/formations",
+      "sort_order": "DESC",
+      "sort": "date",
+      "manualFilter": "",
+      "switch_label": "Date",
+      "titreHome": "Formations",
+      "sousTitreHome": "Découvrez les formations de nos partenaires.",
+      "sortList": ["date", "score"],
+      "facetList": []
+    },
+    "materiel_annonce": {
+      "path": "/materiels",
+      "sort_order": "ASC",
+      "sort": "prix",
+      "manualFilter": "is_price:[10 TO *]",
+      "switch_label": "Prix",
+      "titreHome": "Matériels d'occasion",
+      "sousTitreHome": "Découvrez tous les matériels d'occation de nos partenaires.",
+      "sortList": ["date", "score", "prix"],
+      "facetList": []
+    }
+  }
+}

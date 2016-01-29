@@ -1,1 +1,142 @@
-<html> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <title>Batiactu</title> <meta http-equiv="Content-Security-Policy" content="default-src 'self' cdvfile://* http://192.168.3.103 http://demo.batiactu.info http://*.batiactu.com https://*.batiactu.com data: gap: 'unsafe-eval' ; font-src 'self' ; style-src 'self' 'unsafe-inline' http://192.168.3.103 https://fonts.googleapis.com ; media-src *; img-src 'self' http://*.batiactu.com "> <link type="image" rel="icon" href="images/favicon_batiactu.ico"> <link rel="stylesheet" href="styles/vendor.27ba9c41.css"> <link rel="stylesheet" href="styles/main.6b853cd6.css">   <body ng-app="appliMobileBatiActuApp" id="monBody"> <div id="top"></div>  <div ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion'" class="navbar navbar-default navbar-fixed-top"> <div class="navbar-header"> <a href="#/filactu" class="navbar-brand"><i class="fa fa-home fa-lg"></i></a> <button class="navbar-toggle" type="button"> <a href="#/compte"><span class="fa fa-user fa-lg text-white"></span></a> </button> </div> <div class="collapse navbar-collapse"> <ul class="nav navbar-nav navbar-right margin-right-20"> <li><a href="#/compte"><strong>Mon compte</strong></a></li> </ul> </div> </div>   <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreHaute}}" class="btn-group btn-group-justified margin-top-45"> <a ng-click="videEntity()" class="btn btn-default"><i class="fa fa-fire"></i> Batiactu</a> <a href="#/filactu" ng-click="changeEntity('')" class="btn btn-default"><i class="fa fa-newspaper-o"></i> Mon Batiactu</a> </div>   <div ng-controller="ArticlesCtrl" ng-show="{{accesBarreBasse}}" class="menu-bas"> <div class="btn-group btn-group-justified"> <a href="#/gestion_realisations" class="btn btn-default"><i class="fa fa-briefcase"></i> Réalisations</a> <a href="#/discussions" class="btn btn-default"><i class="fa fa-comments"></i> Discussions</a> <a href="#/groupes" ng-click="changeEntity('reseau_groupe')" class="btn btn-default"><i class="fa fa-users"></i> Groupes</a> </div> </div>   <div class="container-fluid"> <div class="row-fluid">  <div ng-controller="ArticlesCtrl" class="navigation-margin-top"> <div ng-show="{{accesMenuToggle}}"> <span id="menu-toggle" class="btn btn-dark toggle toggle-margin-top z-index-9999"><i class="fa fa-filter"></i></span> <nav id="sidebar-wrapper" class="margin-top-45-neg"> <ul class="sidebar-nav"> <a id="menu-close" href="#" class="btn btn-light pull-right toggle"><i class="fa fa-times"></i></a>  <div class="panel-group" id="accordion"> <div class="panel panel-accordion"> <div class="panel-heading"> <h4 class="panel-title text-white font-size-1-3"><a href="#/actualites">Actualités</a></h4> </div> <div class="panel-heading"> <h4 class="panel-title text-white font-size-1-3"><a href="#/produits">Publications</a></h4> </div> <div class="panel-heading"> <h4 class="panel-title text-white font-size-1-3"><a href="#/realisations">Réalisations</a></h4> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse1Gen"> <h4 class="text-white neg-margin-left">Thèmes <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse1Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="theme in menuToggle.themes"> <a href="#" ng-click="sortByTheme(theme.name)"> <span>{{theme.name}} ({{theme.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/actualites') || ($location.path()=='/' && filter.fabricant==undefined && filter.type_realisation==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2Gen"> <h4 class="text-white neg-margin-left">Rubriques <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse2Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="rubrique in menuToggle.rubriques"> <a href="#" ng-click="sortByRubrique(rubrique.name)"> <span>{{rubrique.name}} ({{rubrique.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/realisations') || ($location.path()=='/' && filter.fabricant==undefined && filter.theme==undefined) && filter.rubrique==undefined"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3Gen"> <h4 class="text-white neg-margin-left">Type de réalisation <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse3Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="type_real in menuToggle.types_realisation"> <a href="#" ng-click="sortByTypeRealisation(type_real.name)"> <span>{{type_real.name | traduction}} ({{type_real.value}})</span> </a> </li> </p> </div> </div> </div>  <div class="panel panel-accordion" ng-show="($location.path()=='/produits') || ($location.path()=='/' && filter.theme==undefined && filter.type_realisation==undefined && filter.rubrique==undefined)"> <div class="panel-heading"> <h4 class="panel-title"> <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4Gen"> <h4 class="text-white neg-margin-left">Fabricants <i class="fa fa-caret-down fa-lg"></i></h4> </a> </h4> </div>  <div id="collapse4Gen" class="panel-collapse collapse"> <div class="panel-body"> <p class="text-justify"> <li class="neg-margin-left" ng-repeat="fabricant in menuToggle.fabricants"> <a href="#" ng-click="sortByFabricants(fabricant.name)"> <span>{{fabricant.name}} ({{fabricant.value}})</span> </a> </li> </p> </div> </div> </div>  <ul class="margin-top-250 opacity-1"> <a href="{{URL}}">URL du WS</a> </ul> </div> </ul> </nav> </div> </div>  </div> </div>  <div ng-view></div> <hr ng-controller="ArticlesCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte'"> <footer ng-controller="ArticlesCtrl" ng-show="{{accesFooter}}" class="neg-margin-top hide-footer"> <div class="container-fluid follow-us-container"> <div class="text-center follow-us"> Nous suivre </div> <br> <div class="text-center"> <a class="fa fa-facebook social-icon" href="https://www.facebook.com/Batiactu?fref=ts" target="_blank"></a> <a class="fa fa-twitter social-icon" href="https://twitter.com/actualite_BTP" target="_blank"></a> <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/cap-information-professionnelle" target="_blank"></a> <a class="fa fa-google-plus social-icon" href="https://plus.google.com/+batiactu/about?hl=fr" target="_blank"></a> </div> </div> </footer> <script src="scripts/vendor.84c19ddf.js"></script> <script src="scripts/scripts.73b65605.js"></script>  
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Batiactu</title>
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' cdvfile://* http://192.168.3.103 http://*.batiactu.info  http://*.batiactu.com https://*.batiactu.com data: gap: 'unsafe-eval' ; font-src 'self' ; style-src 'self' 'unsafe-inline' http://192.168.3.103 https://fonts.googleapis.com ; media-src *; img-src 'self' http://*.batiactu.com http://*.batiactu.info">
+
+        <link type="image" rel="icon" href="images/favicon_batiactu.ico">
+
+        <!-- build:css({.,..,app}) styles/vendor.css -->
+        <!--link rel="stylesheet" href="styles/bootstrapYeti.css"-->
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/bower_components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/bower_components/fancybox-plus/css/jquery.fancybox-plus.css" />
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
+        <!-- endbuild -->
+
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/app/styles/main.css">
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/app/styles/formation_annonce.css">
+        <link rel="stylesheet" href="http://192.168.3.103/appli_mobile_batiactu/app/styles/materiel_annonce.css">
+        <!-- endbuild -->
+
+
+        <!-- Pour les partages
+        <script language="javascript" src="http://reseau.batiactu.com/plugin/like-share-comment.js"></script>
+        <script language="javascript">
+            var cip_BReseauLike = new BReseauLike();
+            cip_BReseauLike.set(document.location.href, 'type_like');
+
+            var cip_BReseaushare = new BReseauShare();
+            cip_BReseaushare.set(document.location.href, 'type_share');
+
+            var cip_BReseauComment = new BReseauComment();
+            cip_BReseauComment.set(document.location.href);
+        </script>
+        -->
+
+
+    </head>
+
+    <body id="monBody">
+
+        <div id="top"></div>
+
+        <!-- Menu general dans le header-->
+        <div class="header" ng-include="'views/header.html'"></div>
+
+        <!-- Menu secondaire haut -->
+        <div class="menu-haut" ng-include="'views/menu_haut.html'"></div>
+
+        <!-- Menu secondaire bas -->
+        <div class="menu-bas" ng-include="'views/menu_bas.html'"></div>
+
+        <!-- Affiche le contenu de la page -->
+        <div ng-view></div>
+ 
+        <hr ng-controller="GestionCtrl" ng-show="$location.path()!='/identification' && $location.path()!='/inscription' && $location.path()!='/connexion' && $location.path()!='/compte' && $location.path()!='/motdepasseoublie'">
+
+        <div class="footer" ng-include="'views/footer.html'"></div>
+
+
+        <!-- build:js({.,..,app}) scripts/vendor.js -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-touch/angular-touch.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-route/angular-route.js"></script>
+
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/fancybox-plus/src/jquery.fancybox-plus.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-fancybox-plus/js/angular-fancybox-plus.js"></script>
+
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+
+        <!-- POUR FLECHE VERS LE HAUT -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/libs/js/easing.js" ></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/libs/js/jquery.ui.totop.js" ></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/libs/js/ui-bootstrap-tpls-1.1.1.js"></script>
+
+
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- Liste des modules -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/baLogs/baLogs.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/baTraduction/baTraduction.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/storage/web/webStorage.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/synchro/synchro.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/baConfig/baConfig.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/baPhonegap/baPhonegap.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/modules/baPush/baPush.js"></script>
+
+        <!-- Appli générale -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/app.js"></script>
+
+        <!-- Liste des services -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/article.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/config.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/pub.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/compte.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/groupe.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/services/realisation.js"></script>
+
+        <!-- Liste des filtres -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/filters/filter.js"></script>
+
+        <!-- Liste des directives -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/directives/error_img.js"></script>
+
+        <!-- Liste des controllers -->
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/articleDetails.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/articles.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/pubs.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/identification.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/compte.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/filactu.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/groupes.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/realisations.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/discussions.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/gestionFilActu.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/profil.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/gestion.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/filtres.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/entity_type/materiel_annonce.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/login.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/motdepasseoublie.js"></script>
+        <script type="text/javascript" src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/controleurs/demandeDoc.js"></script>
+
+
+        <script src="http://192.168.3.103/appli_mobile_batiactu/app/scripts/site/site.js"></script>
+
+
+        <!-- endbuild -->
+
+    </body>
+</html>
