@@ -94,13 +94,11 @@
     <!-- plugin phonegap device -->
     <gap:plugin name="org.apache.cordova.device" version="0.3.0" />
 
+    <preference name="android-build-tool" value="gradle" />
     <plugin name="phonegap-plugin-push" source="npm" />
-
-
 
     <!-- plugin Navigation liste blanche -->
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-
 
     <allow-navigation href="https://chiffrage.batiactu.com/*" />
     <allow-navigation href="http://dev.chiffrage.batiactu.com/*" />
