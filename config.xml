@@ -5,10 +5,12 @@
         version     = "1.0.0"
         versionCode = "1">
  
-    <name>Batiactu - eclaté TEST</name>
+    <name>Batiactu</name>
      
     <description>
-        Application Test avec index eclaté
+        Application officielle de Batiactu Groupe.
+        Découvrez les actualités de Batiactu, les produits de plus d'une centaine de fabricants, mais également les réalisations des membres de Batiactu Réseau.
+        Inscrivez-vous et découvrez dès maintenant l'application!
     </description>
 
     <author href="http://www.batiactugroupe.com" email="webmaster@batiactugroupe.com">Batiactu Groupe</author>

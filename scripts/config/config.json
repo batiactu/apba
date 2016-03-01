@@ -1,10 +1,45 @@
 {
   "configGen": {
     "entity_type" : [
-      "article_edito", "produitheque_produit", "reseau_realisation", "formation_annonce", "materiel_annonce"
+      "article_edito", "produitheque_produit", "reseau_realisation", "formation_annonce", "materiel_annonce", "emploi_annonce"
     ],
     "filterNotVisible" : ["sort", "sort_order", "switch_label", "keywords", "entity_type", "manual"],
-    "facet": [],
+    "facet": {
+      "INFO": "Liste des facets en fonction des path associées en cours de DEV ( voir si necessaire)",
+      "/home": [
+        {
+          "name": "Thèmes",
+          "id": "themes",
+          "":""
+        }
+      ],
+      "/actualites" : [
+        {
+          "name": "Thèmes",
+          "id": "themes",
+          "":""
+        },
+        {
+          "name": "Rubriques",
+          "id": "rubriques",
+          "":""
+        }
+      ],
+      "/realisations": [
+        {
+          "name": "Type de réalisation",
+          "id": "types_realisation",
+          "":""
+        }
+      ],
+      "/produits": [
+        {
+          "name": "Fabricants",
+          "id": "fabricants",
+          "":""
+        }
+      ]
+    },
     "sort": {
       "date": "Date",
       "score": "Pertinence",
@@ -14,6 +49,7 @@
   "configEntityType": {
     "article_edito": {
       "path": "/actualites",
+      "name": "Actualités",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -21,21 +57,26 @@
       "titreHome": "Actualités",
       "sousTitreHome": "Découvrez ici toutes les actualités de Batiactu.",
       "sortList": ["date", "score"],
-      "facetList": []
+      "facetList": ["theme", "rubrique"],
+      "filtre_theme": "sm_theme",
+      "filtre_rubrique": "sm_rubrique"
     },
     "produitheque_produit": {
       "path": "/produits",
+      "name": "Publications",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
       "switch_label": "Date",
       "titreHome": "Publications",
-      "sousTitreHome": "Découvrez ici tous les publications de Batiactu.",
+      "sousTitreHome": "Découvrez ici toutes les publications de Batiactu.",
       "sortList": ["date", "score"],
-      "facetList": []
+      "facetList": ["fabricant"],
+      "filtre_fabricant": "ss_indus"
     },
     "reseau_realisation": {
       "path": "/realisations",
+      "name": "Réalisations",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -43,10 +84,12 @@
       "titreHome": "Réalisations sur Batiactu Réseau",
       "sousTitreHome": "Découvrez ici les réalisations des membres de Batiactu.",
       "sortList": ["date", "score"],
-      "facetList": []
+      "facetList": ["type_realisation"],
+      "filtre_type_realisation": "ss_type_real"
     },
     "reseau_groupe": {
       "path": "/groupes",
+      "name": "Groupes",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -54,6 +97,7 @@
     },
     "formation_annonce": {
       "path": "/formations",
+      "name": "Formations",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -65,12 +109,25 @@
     },
     "materiel_annonce": {
       "path": "/materiels",
+      "name": "Matériels",
       "sort_order": "ASC",
       "sort": "prix",
       "manualFilter": "is_price:[10 TO *]",
       "switch_label": "Prix",
       "titreHome": "Matériels d'occasion",
       "sousTitreHome": "Découvrez tous les matériels d'occation de nos partenaires.",
+      "sortList": ["date", "score", "prix"],
+      "facetList": []
+    },
+    "emploi_annonce": {
+      "path": "/offres-emploi",
+      "name": "BatiactuEmploi",
+      "sort_order": "ASC",
+      "sort": "prix",
+      "manualFilter": "is_price:[10 TO *]",
+      "switch_label": "Prix",
+      "titreHome": "Offres d'emploi",
+      "sousTitreHome": "Découvrez toutes les offres d'emploi.",
       "sortList": ["date", "score", "prix"],
       "facetList": []
     }
