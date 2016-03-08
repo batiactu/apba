@@ -31,13 +31,6 @@
           "id": "types_realisation",
           "":""
         }
-      ],
-      "/produits": [
-        {
-          "name": "Fabricants",
-          "id": "fabricants",
-          "":""
-        }
       ]
     },
     "sort": {
@@ -63,7 +56,7 @@
     },
     "produitheque_produit": {
       "path": "/produits",
-      "name": "Publications",
+      "name": "Produits",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -77,6 +70,8 @@
     "reseau_realisation": {
       "path": "/realisations",
       "name": "Réalisations",
+      "logo": true,
+      "logoName": "realisations_50.png",
       "sort_order": "DESC",
       "sort": "date",
       "manualFilter": "",
@@ -109,7 +104,7 @@
     },
     "materiel_annonce": {
       "path": "/materiels",
-      "name": "Matériels",
+      "name": "Matériel d'occasion",
       "sort_order": "ASC",
       "sort": "prix",
       "manualFilter": "is_price:[10 TO *]",
@@ -121,7 +116,7 @@
     },
     "emploi_annonce": {
       "path": "/offres-emploi",
-      "name": "BatiactuEmploi",
+      "name": "Offres d'emploi BTP",
       "sort_order": "ASC",
       "sort": "prix",
       "manualFilter": "is_price:[10 TO *]",
